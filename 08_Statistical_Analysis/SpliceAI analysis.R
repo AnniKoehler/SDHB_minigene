@@ -14,12 +14,12 @@ library(writexl)
 # (ggplot2/tidyverse nicht nötig, da hier kein Plot)
 
 # Set working directory
-setwd("~/Library/Mobile Documents/com~apple~CloudDocs/Doktorarbeit/Analysis/transcript_analysis_type plot_spliceAI ")
+setwd()
 
 # ----------------------------
 # Daten laden (rohe Basis)
 # ----------------------------
-df_all <- read_excel("2025_08_18_SDHB MG transcripts shorter_ACMG_short.xlsx") %>%
+df_all <- read_excel("transcript_table.xlsx") %>%
   clean_names() %>%
   rename(
     hgvsg_hg38 = hgv_sg_hg38,
