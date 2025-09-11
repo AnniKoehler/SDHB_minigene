@@ -1,0 +1,10 @@
+Folder structure
+1) Synthetic variant table (01_Synthetic_Variant_Table)
+2) SpliceAI run (02_SpliceAI_Run)
+3) Variant prioritzation with VEP and SpliceAI cutoffs (03_Variant_Prioritization)
+4) Minigene reference with GTF, FASTA (04_Minigene_Reference)
+5) NGS workflow and STAR parameters (05_NGS_Workflow)
+6) Automated HGVS nomenclature creation (06_Automated_HGVS_Nomenclature)
+7) ACMG classification (07_ACMG_Classification)
+8) Statistical analyses (08_Statistical_Analysis)
+9) Code for figures (08_Additional_Plots_Code)
