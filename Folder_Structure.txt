@@ -7,6 +7,6 @@ Folder structure
 6) Automated HGVS nomenclature creation (06_Automated_HGVS_Nomenclature)
 7) ACMG classification (07_ACMG_Classification)
 8) Statistical analyses (08_Statistical_Analysis)
-9) Code for figures (08_Additional_Plots_Code)
+9) Code for figures (09_Additional_Plots_Code)
 
 Link to GitHub with Alex' Master's thesis: https://github.com/baumanale/master_thesis/tree/main
