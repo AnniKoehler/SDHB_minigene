@@ -9,9 +9,6 @@
 #   - Top bar annotation shows transcript-type composition per variant.
 #   - Bottom annotation labels genomic region (Exon/Intron) computed for minus strand.
 # Output: "output_heatmap.pdf" (and on-screen plot)
-# Notes:
-#   - Columns "type" values like "no functional assesment3" are relabeled to "…assessment³" etc.
-#   - Column order: MG_WT first, then descending by genomic_position; NA positions to the right.
 # =====================================================
 
 # --- Libraries ---
