@@ -1,7 +1,12 @@
 # ===============================================================
 # Transcript pooling, Variant classification & ACMG Table Builder
 # ===============================================================
-# What this script does
+#
+# Input
+# - main variant sheet
+# - sheet that provides HGVSp
+#
+# Process
 # - Loads a curated variant sheet with RNA/protein HGVS and per-variant ratios
 # - Builds a compact per-variant info string (e.g., "0.42 (r.c.XXX, p.YYY)")
 # - Optionally tags special cases as FL_WT or N/A
@@ -11,10 +16,6 @@
 # - Computes a combined strength string (e.g., "PVS1 (0.32) + BP7_S (1.00)")
 # - Assigns overall ACMG strength (for clear cases)
 # - Joins a second sheet to add HGVSp and writes the final Excel table
-#
-# Inputs (adjust paths/file names as needed)
-# - main variant sheet
-# - sheet that provides HGVSp
 #
 # Output
 # - "ACMG_table_extended.xlsx"  (final, wide table)
