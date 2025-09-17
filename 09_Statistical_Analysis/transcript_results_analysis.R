@@ -1,21 +1,19 @@
-
-# Transcript results analysis 
-
 # ============================================
-# Transcript results analysis — summary
+# Transcript Results Analysis 
+# ============================================
+# INPUTS:  - Excel table with columns: type, variant, hgv_sc, hgv_sg_hg38, splice_effect, aberrant_splicing
+#   (optional: non_cannonical_splice_motif). Set INPUT_FILE/OUTPUT_XLSX in script.
+# PROCESS: 
+# - Clean/rename columns; compute pre-filter counts.
+# - Exclude MG_WT and non-assessable rows.
+# - Per-variant transcript counts (max/median/mean).
+# - Flag new splice sites; count aberrant vs non-aberrant; detect leaky variants.
+# - Summarize splice-effect & consequence categories (transcript + variant level).
 #
-# This script analyzes transcript-level splicing data:
-#  1. Load transcript table (Excel).
-#  2. Count pre-filter metrics (total, uncharacterized, no functional).
-#  3. Filter out WT and non-assessable transcripts.
-#  4. Compute per-variant transcript counts (max, median, mean).
-#  5. Identify new splice sites, aberrant/non-aberrant, leaky variants.
-#  6. Summarize splice-effect categories (intron retention, exon skipping, pseudo exon).
-#  7. Summarize transcript consequences (full-length, PTC, in-frame).
-#  8. Export summary table to Excel + print.
-#  9. Plot distribution of splice effects (PNG + PDF).
+# OUTPUTS
+# - Excel summary table (OUTPUT_XLSX) 
+# - Plot of splice-effect proportions: splice_effects_transcript_percent.(png|pdf)
 # ============================================
-
 # ============================
 # Load all necessary libraries
 # ============================
