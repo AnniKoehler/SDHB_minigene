@@ -8,8 +8,7 @@
 # - Exclude MG_WT and non-assessable rows.
 # - Per-variant transcript counts (max/median/mean).
 # - Flag new splice sites; count aberrant vs non-aberrant; detect leaky variants.
-# - Summarize splice-effect & consequence categories (transcript + variant level).
-#
+# - Summarize splice-effect & consequence categories (transcript + variant level)
 # OUTPUTS
 # - Excel summary table (OUTPUT_XLSX) 
 # - Plot of splice-effect proportions: splice_effects_transcript_percent.(png|pdf)
