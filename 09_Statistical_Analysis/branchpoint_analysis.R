@@ -1,25 +1,21 @@
 # -----------------------------------------------------------
 # Intron features analysis — PPT & branch point finder
-#
-# Description:
+# -----------------------------------------------------------
+# Input:   - seq_list — a named list of DNAString objects (adjust sequences below).
+# Process:
 #   Analyzes intron sequences (as Biostrings::DNAString) to locate:
 #     - the strongest polypyrimidine tract (PPT) within A-40..A-5
 #     - a candidate branch point (BP) within A-60..A-10 using consensus motifs
 #   Assumes each input intron ends with the canonical acceptor "AG";
 #   the position of the 'A' in that terminal "AG" is used as reference (c.(Exon)-2).
-#
-# Input:
-#   seq_list — a named list of DNAString objects (adjust sequences below).
-#
-# Output:
-#   Excel file "intron_analysis_results.xlsx" with one row per intron.
+# Output:  - Excel file "intron_analysis_results.xlsx" with one row per intron.
 # -----------------------------------------------------------
 
 # -------------------------------
 # 1) Load packages
 # -------------------------------
 library(Biostrings)
-library(IRanges)   # for Rle
+library(IRanges)  
 library(writexl)
 
 # -------------------------------
