@@ -1,5 +1,5 @@
 # =====================================================
-# ACMG points + class changes (minimal, generic I/O)
+# ACMG points + class changes
 # =====================================================
 # Input:  Excel file "input_file.xlsx" in the working directory.
 #         Must contain columns "without_mg" and "with_mg" holding ACMG/AMP codes.
