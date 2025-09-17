@@ -1,20 +1,13 @@
+# =====================================================
 # SpliceAI / transcript summary
-
-# Description:
-#   Loads a variant table (with SpliceAI delta score columns), 
-#   computes summary stats and writes a single-sheet Excel.
-#
-#   Key assumptions:
-#     - input table has (at least) columns:
+# =====================================================
+# Input:   - table has (at least) columns:
 #         variant (name), hgvsc, genomic_position, ds_ag, ds_al, ds_dg, ds_dl
-
-
-#   Canonical splice sites:
-#     - Positive strand:  donor = exon_end + {1,2};    acceptor = exon_start - {1,2}
-#     - Negative strand:  donor = exon_start - {1,2};  acceptor = exon_end + {1,2}
+# Process:
+#          - Loads a variant table (with SpliceAI delta score columns), 
+#          - computes summary stats and writes a single-sheet Excel.
+# Output:  - summary table  
 #
-
-
 # ----------------------------
 # Load necessary libraries
 # ----------------------------
