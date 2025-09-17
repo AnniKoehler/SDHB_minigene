@@ -1,24 +1,18 @@
 # ===============================================================
 # Transcript pooling, Variant classification & ACMG Table Builder
 # ===============================================================
-#
-# Input
-# - main variant sheet
-# - sheet that provides HGVSp
-#
-# Process
-# - Loads a curated variant sheet with RNA/protein HGVS and per-variant ratios
-# - Builds a compact per-variant info string (e.g., "0.42 (r.c.XXX, p.YYY)")
-# - Optionally tags special cases as FL_WT or N/A
-# - Appends Unicode superscripts from transcript_acmg_code (e.g., N/A¹²)
-# - Normalizes ACMG codes (collapsing any N/A* to plain "N/A")
-# - Pools per-variant evidence into a wide ACMG table (PVS1, PVS1_S, PVS1_M, BP7_S, N/A)
-# - Computes a combined strength string (e.g., "PVS1 (0.32) + BP7_S (1.00)")
-# - Assigns overall ACMG strength (for clear cases)
-# - Joins a second sheet to add HGVSp and writes the final Excel table
-#
-# Output
-# - "ACMG_table_extended.xlsx"  (final, wide table)
+# Input:    - main variant sheet
+#           - sheet that provides HGVSp
+# Process:  - Loads a curated variant sheet with RNA/protein HGVS and per-variant ratios
+#           - Builds a compact per-variant info string (e.g., "0.42 (r.c.XXX, p.YYY)")
+#           - Optionally tags special cases as FL_WT or N/A
+#           - Appends Unicode superscripts from transcript_acmg_code (e.g., N/A¹²)
+#           - Normalizes ACMG codes (collapsing any N/A* to plain "N/A")
+#           - Pools per-variant evidence into a wide ACMG table (PVS1, PVS1_S, PVS1_M, BP7_S, N/A)
+#           - Computes a combined strength string (e.g., "PVS1 (0.32) + BP7_S (1.00)")
+#           - Assigns overall ACMG strength (for clear cases)
+#           - Joins a second sheet to add HGVSp and writes the final Excel table
+# Output:   - "ACMG_table_extended.xlsx"  (final, wide table)
 # ===============================================================
 
 # -------------------------------
