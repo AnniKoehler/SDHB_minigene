@@ -2,7 +2,7 @@
 # SDHB Lollipop-Style Schematic with Semi-Log Intron Compression
 # =====================================================
 # Input:  Excel file "input_file.xlsx" in the working directory, with columns:
-#         - hgv_sg_hg38, hgv_sc, variant, genomic_position (and others)
+#         - hgvsg_hg38, hgvsc, variant, genomic_position (and others)
 # Process:
 #   - Read variants, derive short HGVSc labels, and deduplicate by position.
 #   - Define exons (5'→3'), compress introns (semi-log around the midpoint),
