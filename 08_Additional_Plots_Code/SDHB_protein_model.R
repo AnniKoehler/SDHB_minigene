@@ -7,9 +7,6 @@
 #   - Overlay manually defined exon spans and domain boxes.
 #   - Label exons; show a legend for domains only.
 # Output: "protein_map.pdf" (vector PDF, ~15x2.5 inches).
-# Notes:
-#   - Keep exon 2–5 highlighted (different fill).
-#   - Adjust colors / ranges in the 'domains' and 'exon_ranges' tables if needed.
 # =====================================================
 
 # --- Load libraries ---
