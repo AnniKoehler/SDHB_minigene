@@ -75,10 +75,10 @@ gg <- acmg_transcripts %>%
   coord_flip() +
   scale_y_continuous(labels = percent_format(accuracy = 1)) +
   labs(
-    x = "ACMG Code",
-    y = "Share",
-    fill = "Splice Effect",
-    title = "Distribution of Splice Effects per ACMG Code"
+    x = "Transcript ACMG Code",
+    y = "Proportion",
+    fill = "Transcript splice effect",
+    title = "Distribution of transcript splice effects across ACMG evidence codes"
   ) +
   theme_classic() +
   theme(panel.grid = element_blank(),
