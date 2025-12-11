@@ -1,0 +1,7 @@
+MG_SDHB_3.1	sdhb_minigene_plasmid	gene	655 3618	.	+	0	gene_id "SDHB"; gbkey "Gene"; gene "SDHB"; gene_biotype "protein_coding";
+MG_SDHB_3.1	sdhb_minigene_plasmid	transcript	655	3618	.	+	0	gene_id "SDHB"; transcript_id "MG_spliced_plasmid"; gbkey "mRNA"; gene "SDHB"; transcript_biotype "SDHB";
+MG_SDHB_3.1	sdhb_minigene_plasmid	exon	655	789	.	+	0	gene_id "SDHB"; transcript_id "MG_spliced_plasmid"; gbkey "mRNA"; gene "SDHB"; transcript_biotype "SDHB"; exon_number "1";
+MG_SDHB_3.1	sdhb_minigene_plasmid	exon	890	1017	.	+	0	gene_id "SDHB"; transcript_id "MG_spliced_plasmid"; gbkey "mRNA"; gene "SDHB"; transcript_biotype "SDHB"; exon_number "2";
+MG_SDHB_3.1	sdhb_minigene_plasmid	exon	1668	1753	.	+	0	gene_id "SDHB"; transcript_id "MG_spliced_plasmid"; gbkey "mRNA"; gene "SDHB"; transcript_biotype "SDHB"; exon_number "3";
+MG_SDHB_3.1	sdhb_minigene_plasmid	exon	2403	2539	.	+	0	gene_id "SDHB"; transcript_id "MG_spliced_plasmid"; gbkey "mRNA"; gene "SDHB"; transcript_biotype "SDHB"; exon_number "4";
+MG_SDHB_3.1	sdhb_minigene_plasmid	exon	3274	3618	.	+	0	gene_id "SDHB"; transcript_id "MG_spliced_plasmid"; gbkey "mRNA"; gene "SDHB"; transcript_biotype "SDHB"; exon_number "5";

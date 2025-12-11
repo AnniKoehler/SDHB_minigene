@@ -1,0 +1,132 @@
+# run with: nice -5 snakemake --use-conda --cores 8 --conda-prefix /software/tmp
+
+import os
+import pandas as pd
+from collections import Counter
+
+DIRECTION=["1","2"]
+sample_sheet=pd.read_csv("samples.tsv", sep="\t")
+
+SAMPLES=list(sample_sheet["ID"])
+print(SAMPLES)
+
+def check_symlink(file1, file2):
+    try:
+        os.symlink(file1, file2)
+    except FileExistsError:
+        print("Link for " + file1 + " is already present in 01_raw")
+
+
+for a in sample_sheet['ID']:
+    os.makedirs("../01_raw/" +a, exist_ok=True)
+    check_symlink(sample_sheet[sample_sheet["ID"]==a]["forward reads"].values[0], "../01_raw/"+a +"/"+ sample_sheet[sample_sheet["ID"]==a]["ID"].values[0] +"_1P.fastq.gz")
+    check_symlink(sample_sheet[sample_sheet["ID"]==a]["reverse reads"].values[0], "../01_raw/"+a +"/"+ sample_sheet[sample_sheet["ID"]==a]["ID"].values[0] +"_2P.fastq.gz")
+    os.makedirs("../02_trimmed/" + a +"/fastqc", exist_ok=True)
+    os.makedirs("../03_star/"+a, exist_ok=True)
+
+rule all:
+    input:
+        expand('../01_raw/{sample}/fastqc/{sample}_{direction}P_fastqc.html',direction=DIRECTION, sample=SAMPLES),
+        expand('../02_trimmed/{sample}/fastqc/{sample}_trimmed_{direction}P_fastqc.html', direction=DIRECTION, sample=SAMPLES),
+        expand('../02_trimmed/{sample}/fastqc/{sample}_trimmed_2P_fastqc.html', sample=SAMPLES),
+        expand('../03_star/{sample}/{sample}Aligned.sortedByCoord.out.bam', sample=SAMPLES),
+        expand('../03_star/{sample}/{sample}Aligned.sortedByCoord.out.bam.bai', sample=SAMPLES),
+
+rule fastqc1:
+    input:
+        r = '../01_raw/{sample}/{sample}_{direction}P.fastq.gz',
+    threads: 2
+    priority: 50
+    output:
+        '../01_raw/{sample}/fastqc/{sample}_{direction}P_fastqc.html'
+    conda:
+        "envs/fastqc.yaml"
+    shell:
+        'nice -5 fastqc -o ../01_raw/{wildcards.sample}/fastqc -t {threads} --extract {input.r}'
+
+rule trimming:
+    input:
+        r1= '../01_raw/{sample}/{sample}_1P.fastq.gz',
+        r2= '../01_raw/{sample}/{sample}_2P.fastq.gz',
+    output:
+        p1="../02_trimmed/{sample}/{sample}_trimmed_1P.fastq.gz",
+        u1="../02_trimmed/{sample}/{sample}_trimmed_1U.fastq.gz",
+        p2="../02_trimmed/{sample}/{sample}_trimmed_2P.fastq.gz",
+        u2="../02_trimmed/{sample}/{sample}_trimmed_2U.fastq.gz",
+    conda:
+        "envs/trimmomatic.yaml"
+    threads: 4
+    priority: 50
+    shell:
+        'nice -5 trimmomatic PE -threads {threads} \
+        {input.r1} {input.r2} \
+        {output.p1} {output.u1} \
+        {output.p2} {output.u2} \
+        ILLUMINACLIP:data/TruSeq3-PE.fa:2:30:10:2:true \
+        LEADING:3 TRAILING:3 SLIDINGWINDOW:4:15 MINLEN:36'
+
+
+rule fastqc2:
+    input:
+        r1 = "../02_trimmed/{sample}/{sample}_trimmed_1P.fastq.gz",
+        r2 = "../02_trimmed/{sample}/{sample}_trimmed_2P.fastq.gz"
+    threads: 2
+    output:
+        r1_trim='../02_trimmed/{sample}/fastqc/{sample}_trimmed_1P_fastqc.html',
+        r2_trim='../02_trimmed/{sample}/fastqc/{sample}_trimmed_2P_fastqc.html'
+    conda:
+        "envs/fastqc.yaml"
+    priority: 50
+    shell:
+        'fastqc -o ../02_trimmed/{wildcards.sample}/fastqc -t {threads} --extract {input.r1}; \
+         fastqc -o ../02_trimmed/{wildcards.sample}/fastqc -t {threads} --extract {input.r2}'
+
+
+rule StarMapping:
+    input:
+        r1 = "../02_trimmed/{sample}/{sample}_trimmed_1P.fastq.gz",
+        r2 = "../02_trimmed/{sample}/{sample}_trimmed_2P.fastq.gz",
+        Genom="/mnt/ceph/cmtd/01_UserDirectories/01_work/baumanale/90_sonstiges/04_sdhb/01_New_reference_SDHB/star_2_7_9a",
+    output:
+        "../03_star/{sample}/{sample}Aligned.sortedByCoord.out.bam",
+    conda:
+        "envs/star.yaml"
+    threads:
+        8
+    priority: 50
+    shell:
+        'nice -5 STAR \
+            --genomeDir {input.Genom} \
+            --readFilesIn {input.r1} {input.r2} \
+            --runThreadN {threads} \
+            --outFileNamePrefix ../03_star/{wildcards.sample}/{wildcards.sample} \
+            --readFilesCommand zcat \
+            --limitBAMsortRAM 1002186532 \
+            --alignIntronMax 35000 \
+            --alignMatesGapMax 35000 \
+            --outBAMcompression 0 \
+            --outSAMtype BAM SortedByCoordinate \
+            --outSAMprimaryFlag OneBestScore \
+            --outFilterMultimapNmax 20 \
+            --outFilterMismatchNoverLmax 0.04 \
+            --chimSegmentMin 20 \
+            --chimOutType WithinBAM \
+            --chimScoreMin 1 \
+            --chimScoreJunctionNonGTAG 0 \
+            --chimJunctionOverhangMin 20 \
+            --chimSegmentReadGapMax 3 \
+            --alignSJstitchMismatchNmax 5 -1 5 5'
+
+rule indexbam:
+    input:
+        bam = "../03_star/{sample}/{sample}Aligned.sortedByCoord.out.bam"
+    output:
+        bai = "../03_star/{sample}/{sample}Aligned.sortedByCoord.out.bam.bai"
+    conda:
+        "envs/samtools.yaml"
+    priority: 50
+    threads:
+        4
+    shell:
+        "nice -5 samtools index {input.bam} {output.bai}"
+
