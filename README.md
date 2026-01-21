@@ -1,4 +1,4 @@
-Minigene-based characterization and classification of splice-associated variants in succinate dehydrogenase B
+Minigene-based characterization and classification of splice-associated variants in succinate dehydrogenase B 
 
 Overview
 This repository contains scripts and reference files used for the functional assessment of SDHB splice-associated variants using a minigene-based splicing assay in HEK293T cells. The workflow integrates variant prioritization, minigene-specific reference construction, targeted RNA mapping, quantitative transcript analysis, HGVS annotation of aberrant transcripts, integration of RNA analysis into ACMG/AMP criteria and assigment of ACMG/AMP points and classes per variant for overall clinical classification. 
