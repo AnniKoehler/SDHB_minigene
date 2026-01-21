@@ -37,7 +37,7 @@ SDHB_minigene/\
   &emsp;07_ACMG_Classification/\
   &emsp;08_Additional_Plots_Code/\
   &emsp;09_Statistical_Analysis/\
-  &emsp;README.md\
+  &emsp;README.md
 
 ## Folder Descriptions
 
