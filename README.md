@@ -28,16 +28,16 @@ This repository accompanies a manuscript submitted to **npj Precision Oncology**
 ## Repository Structure
 
 SDHB_minigene/\
-  \t01_Synthetic_Variant_Table/\
-  \t02_SpliceAI_Run/\
-  03_Variant_Prioritization/\
-  04_Minigene_Reference/\
-  05_NGS_Workflow/\
-  06_Automated_HGVS_Nomenclature/\
-  07_ACMG_Classification/\
-  08_Additional_Plots_Code/\
-  09_Statistical_Analysis/\
-  README.md\
+  &emsp;01_Synthetic_Variant_Table/\
+  &emsp;02_SpliceAI_Run/\
+  &emsp;03_Variant_Prioritization/\
+  &emsp;04_Minigene_Reference/\
+  &emsp;05_NGS_Workflow/\
+  &emsp;06_Automated_HGVS_Nomenclature/\
+  &emsp;07_ACMG_Classification/\
+  &emsp;08_Additional_Plots_Code/\
+  &emsp;09_Statistical_Analysis/\
+  &emsp;README.md\
 
 ## Folder Descriptions
 
