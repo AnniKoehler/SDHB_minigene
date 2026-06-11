@@ -64,7 +64,7 @@ Scripts used to integrate functional splicing results into ACMG/AMP-compliant va
 
 ### 08_Additional_Plots_Code
 Supplementary plotting scripts used to generate:
-Figure 1: SDHB protein model, lollipop plot, branchpoint analysis
+Figure 1: SDHB protein model, lollipop plot
 Figure 2: SpliceAI heatmap and transcript analysis
 Figure 4: Sashimi plots
 
