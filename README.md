@@ -51,7 +51,7 @@ In silico annotation of synthetic variants located within the SDHB minigene regi
 Prioritization of variants for functional testing based on predicted splice-altering potential using a SpliceAI Δ-score cutoff ≥ 0.25 to maximize sensitivity.
 
 ### 04_Minigene_Reference
-Construction of custom minigene-specific FASTA and GTF references, including exon–intron boundaries and flanking plasmid sequence corresponding to the SDHB minigene construct. These references were used for read alignment.
+Sequence of plasmid used for cloning (pcDNA3.1/Hygro(-)) and inserted SDHB sequences. Construction of custom minigene-specific FASTA and GTF references, including exon–intron boundaries and flanking plasmid sequence corresponding to the SDHB minigene construct. These references were used for read alignment.
 
 ### 05_NGS_Workflow
 Targeted RNA sequencing preprocessing and alignment pipeline using STAR (Dobin et al., 2013), adapted to a custom minigene reference and optimized parameter settings. BAM files and splice-junction files will be deposited at the German Human Genome Archive (GHGA).
